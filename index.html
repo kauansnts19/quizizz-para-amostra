@@ -4,110 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Quiz interativo de Desenvolvimento de Sistemas">
-    <title>DevQuiz | Desafio de Programação</title>
-    <link rel="stylesheet" href="style.css">
+    <title>DevQuiz - Desenvolvimento de Sistemas</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
 </head>
 <body>
     <header class="topbar">
-        <a href="#" class="logo" aria-label="DevQuiz início">
-            <span class="logo-icon">&lt;/&gt;</span>
-            Dev<span>Quiz</span>
-        </a>
-        <span class="header-tag">DESENVOLVIMENTO DE SISTEMAS</span>
+        <a class="logo" href="#"> &lt;/&gt; Dev<span>Quiz</span></a>
+        <span class="tag">DESENVOLVIMENTO DE SISTEMAS</span>
     </header>
 
     <main class="container">
-        <!-- Tela inicial -->
-        <section id="start-screen" class="screen start-screen">
+
+        <!-- TELA INICIAL -->
+        <section id="start-screen" class="panel">
             <div class="hero-icon">💻</div>
-            <span class="eyebrow">TESTE SEUS CONHECIMENTOS</span>
-            <h1>Você domina o<br><span>mundo da tecnologia?</span></h1>
-            <p class="intro">
-                Responda a 8 perguntas sobre programação, lógica,
-                banco de dados e desenvolvimento de sistemas.
+            <p class="eyebrow">TESTE SEUS CONHECIMENTOS</p>
+            <h1>Desafie sua mente.<br><span>Domine a tecnologia.</span></h1>
+            <p class="description">
+                Responda a 8 perguntas sobre programação,
+                lógica, banco de dados e desenvolvimento de sistemas.
             </p>
 
-            <div class="info-grid">
-                <div class="info-card">
-                    <span class="info-icon">📝</span>
+            <div class="features">
+                <div class="feature">
+                    <span>📝</span>
                     <strong>8 perguntas</strong>
-                    <small>Desafio completo</small>
+                    <small>Conhecimento</small>
                 </div>
-                <div class="info-card">
-                    <span class="info-icon">⏱️</span>
+                <div class="feature">
+                    <span>⏱️</span>
                     <strong>15 segundos</strong>
                     <small>Por pergunta</small>
                 </div>
-                <div class="info-card">
-                    <span class="info-icon">🏆</span>
-                    <strong>Até 8.000 pts</strong>
-                    <small>Acertando no tempo</small>
+                <div class="feature">
+                    <span>🏆</span>
+                    <strong>8.000 pontos</strong>
+                    <small>Pontuação máxima</small>
                 </div>
             </div>
 
-            <label class="name-label" for="player-name">Qual é o seu nome?</label>
+            <label for="player-name">Digite seu nome:</label>
             <input id="player-name" type="text" maxlength="30"
-                   placeholder="Digite seu nome..." autocomplete="given-name">
+                   placeholder="Seu nome aqui">
 
-            <button id="start-btn" class="primary-btn">
-                Começar desafio <span>→</span>
+            <button id="start-btn" class="primary-btn" type="button">
+                COMEÇAR DESAFIO →
             </button>
-            <p class="hint">Prepare-se para testar suas habilidades!</p>
+
+            <p class="small-note">Prepare-se. O desafio vai começar!</p>
         </section>
 
-        <!-- Tela do quiz -->
-        <section id="quiz-screen" class="screen quiz-screen hidden">
-            <div class="quiz-top">
-                <div class="player-badge">
-                    <span class="avatar">👨‍💻</span>
-                    <span id="player-display">Programador</span>
+        <!-- TELA DAS PERGUNTAS -->
+        <section id="quiz-screen" class="panel hidden">
+            <div class="quiz-header">
+                <div>
+                    <span class="muted">JOGADOR</span>
+                    <strong id="player-display">Programador</strong>
                 </div>
-                <div class="timer" id="timer">
-                    <span>⏱</span> <strong id="time-left">15</strong>s
+                <div id="timer" class="timer">
+                    ⏱️ <strong id="time-left">15</strong>s
                 </div>
             </div>
 
             <div class="progress-info">
-                <span id="question-counter">PERGUNTA 1 DE 8</span>
-                <span id="score-display">0 pontos</span>
+                <strong id="question-counter">PERGUNTA 1 DE 8</strong>
+                <strong id="score-display">0 pontos</strong>
             </div>
 
             <div class="progress-track">
-                <div id="progress-bar" class="progress-bar"></div>
+                <div id="progress-bar"></div>
             </div>
 
-            <div class="question-card">
-                <span id="question-category" class="category-tag">PROGRAMAÇÃO</span>
+            <div class="question-area">
+                <span id="question-category" class="category">
+                    PROGRAMAÇÃO
+                </span>
                 <h2 id="question-text">Carregando pergunta...</h2>
-                <p class="select-hint">Selecione uma alternativa</p>
-                <div id="answers" class="answers"></div>
-                <div id="feedback" class="feedback hidden" role="status"></div>
-            </div>
+                <p class="muted">Escolha uma alternativa:</p>
 
-            <div class="quiz-footer">
-                <span>🧠 Pense antes de responder!</span>
-                <button id="next-btn" class="primary-btn hidden">
-                    Próxima pergunta →
+                <div id="answers" class="answers"></div>
+
+                <div id="feedback" class="feedback hidden"
+                     role="status" aria-live="polite"></div>
+
+                <button id="next-btn" class="primary-btn hidden"
+                        type="button">
+                    PRÓXIMA PERGUNTA →
                 </button>
             </div>
         </section>
 
-        <!-- Tela de resultado -->
-        <section id="result-screen" class="screen result-screen hidden">
-            <div id="result-emoji" class="result-emoji">🏆</div>
-            <span class="eyebrow">DESAFIO CONCLUÍDO</span>
-            <h1 id="result-title">Mandou bem!</h1>
-            <p id="result-message" class="intro"></p>
+        <!-- TELA DE RESULTADO -->
+        <section id="result-screen" class="panel hidden">
+            <div id="result-emoji" class="hero-icon">🏆</div>
+            <p class="eyebrow">DESAFIO CONCLUÍDO</p>
+            <h1 id="result-title">Parabéns!</h1>
+            <p id="result-message" class="description"></p>
 
             <div class="score-card">
-                <span class="score-label">SUA PONTUAÇÃO</span>
+                <p>SUA PONTUAÇÃO</p>
                 <div class="final-score">
                     <strong id="final-score">0</strong>
                     <span>pontos</span>
                 </div>
-                <div class="result-divider"></div>
-                <div class="result-stats">
+                <div class="stats">
                     <div>
                         <strong id="correct-count">0</strong>
                         <span>Acertos</span>
@@ -123,24 +124,20 @@
                 </div>
             </div>
 
-            <div class="result-actions">
-                <button id="restart-btn" class="primary-btn">
-                    🔄 Jogar novamente
-                </button>
-                <button id="review-btn" class="secondary-btn">
-                    📋 Revisar respostas
-                </button>
-            </div>
+            <button id="review-btn" class="secondary-btn" type="button">
+                📋 REVISAR RESPOSTAS
+            </button>
 
             <div id="review-list" class="review-list hidden"></div>
+
+            <button id="restart-btn" class="primary-btn" type="button">
+                🔄 JOGAR NOVAMENTE
+            </button>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <p>Desenvolvido para quem quer ir além do código. <span>♥</span></p>
-        <small>DevQuiz © 2026 — Projeto educacional</small>
+    <footer>
+        <p>DevQuiz — Aprenda, programe e evolua! 🚀</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
