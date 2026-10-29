@@ -1,5 +1,7 @@
-// ========== PERGUNTAS FÁCEIS ==========
+// ========== 8 PERGUNTAS FÁCEIS ==========
+// Mistura de múltipla escolha (4 alternativas) + Verdadeiro/Falso
 const questions = [
+  // 1 - HTML (múltipla escolha)
   {
     category: "HTML",
     catClass: "cat-html",
@@ -13,19 +15,19 @@ const questions = [
     correct: 0,
     explanation: "HTML = HyperText Markup Language (Linguagem de Marcação de Hipertexto)."
   },
+  // 2 - HTML (Verdadeiro ou Falso)
   {
     category: "HTML",
     catClass: "cat-html",
-    question: "Qual tag usamos para criar o maior título em uma página?",
+    question: "A tag <h1> é usada para criar o maior título em uma página HTML.",
     options: [
-      "<h6>",
-      "<title>",
-      "<h1>",
-      "<header>"
+      "Verdadeiro",
+      "Falso"
     ],
-    correct: 2,
-    explanation: "A tag <h1> é a de maior importância/tamanho para títulos."
+    correct: 0,
+    explanation: "Verdadeiro! A tag <h1> representa o título de maior importância/tamanho."
   },
+  // 3 - HTML (múltipla escolha)
   {
     category: "HTML",
     catClass: "cat-html",
@@ -39,19 +41,7 @@ const questions = [
     correct: 1,
     explanation: "A tag correta é <p> (de paragraph)."
   },
-  {
-    category: "HTML",
-    catClass: "cat-html",
-    question: "Qual atributo usamos em uma tag <img> para indicar o caminho da imagem?",
-    options: [
-      "href",
-      "link",
-      "src",
-      "path"
-    ],
-    correct: 2,
-    explanation: "Usamos o atributo src (source) para apontar o caminho da imagem."
-  },
+  // 4 - CSS (múltipla escolha)
   {
     category: "CSS",
     catClass: "cat-css",
@@ -65,32 +55,19 @@ const questions = [
     correct: 1,
     explanation: "CSS = Cascading Style Sheets (Folhas de Estilo em Cascata)."
   },
+  // 5 - CSS (Verdadeiro ou Falso)
   {
     category: "CSS",
     catClass: "cat-css",
-    question: "Qual propriedade CSS muda a cor do texto?",
+    question: "A propriedade 'color' no CSS serve para mudar a cor do texto.",
     options: [
-      "text-color",
-      "font-color",
-      "color",
-      "text-style"
-    ],
-    correct: 2,
-    explanation: "A propriedade correta é simplesmente 'color'."
-  },
-  {
-    category: "CSS",
-    catClass: "cat-css",
-    question: "Qual propriedade define a cor de fundo de um elemento?",
-    options: [
-      "background-color",
-      "bgcolor",
-      "color-background",
-      "fill-color"
+      "Verdadeiro",
+      "Falso"
     ],
     correct: 0,
-    explanation: "Usamos background-color para definir a cor de fundo."
+    explanation: "Verdadeiro! A propriedade 'color' define a cor do texto."
   },
+  // 6 - CSS (múltipla escolha)
   {
     category: "CSS",
     catClass: "cat-css",
@@ -104,6 +81,7 @@ const questions = [
     correct: 1,
     explanation: "No CSS, o seletor de ID usa o símbolo # (ex: #meuId)."
   },
+  // 7 - JAVA (múltipla escolha)
   {
     category: "JAVA",
     catClass: "cat-java",
@@ -117,44 +95,17 @@ const questions = [
     correct: 1,
     explanation: "O método main correto é: public static void main(String[] args)"
   },
+  // 8 - JAVA (Verdadeiro ou Falso)
   {
     category: "JAVA",
     catClass: "cat-java",
-    question: "Qual comando usamos para imprimir algo no console em Java?",
+    question: "Em Java usamos System.out.println() para imprimir algo no console.",
     options: [
-      "console.log()",
-      "print()",
-      "System.out.println()",
-      "echo()"
+      "Verdadeiro",
+      "Falso"
     ],
-    correct: 2,
-    explanation: "Em Java usamos System.out.println() para imprimir no console."
-  },
-  {
-    category: "JAVA",
-    catClass: "cat-java",
-    question: "Qual palavra-chave usamos para criar uma variável do tipo texto (String) em Java?",
-    options: [
-      "string nome = \"João\";",
-      "String nome = \"João\";",
-      "text nome = \"João\";",
-      "var nome = \"João\";"
-    ],
-    correct: 1,
-    explanation: "Em Java, String começa com letra maiúscula: String nome = \"João\";"
-  },
-  {
-    category: "JAVA",
-    catClass: "cat-java",
-    question: "Java é uma linguagem:",
-    options: [
-      "Apenas para sites",
-      "Orientada a objetos",
-      "Só para aplicativos mobile",
-      "De marcação como HTML"
-    ],
-    correct: 1,
-    explanation: "Java é uma linguagem de programação orientada a objetos (OOP)."
+    correct: 0,
+    explanation: "Verdadeiro! System.out.println() é o comando usado para imprimir no console em Java."
   }
 ];
 
@@ -248,22 +199,22 @@ function showResult() {
     localStorage.setItem('arcadeDevHighScore', highScore);
   }
 
-  // Rank e mensagem
+  // Rank e mensagem (ajustado para 8 perguntas)
   let rank, message, stars;
 
   if (score === total) {
     rank = "★★★ LENDÁRIO ★★★";
     message = "PERFEITO! Você dominou o básico de HTML, CSS e Java!";
     stars = "★★★★★";
-  } else if (score >= 10) {
+  } else if (score >= 7) {
     rank = "★★ ARCADE MASTER ★★";
     message = "Excelente! Quase perfeito. Continue treinando!";
     stars = "★★★★☆";
-  } else if (score >= 7) {
+  } else if (score >= 5) {
     rank = "★ BOM JOGADOR ★";
     message = "Bom trabalho! Você já sabe bastante do básico.";
     stars = "★★★☆☆";
-  } else if (score >= 4) {
+  } else if (score >= 3) {
     rank = "INICIANTE";
     message = "Você está no caminho! Revise e jogue de novo.";
     stars = "★★☆☆☆";

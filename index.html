@@ -20,7 +20,7 @@
     <!-- SCORE -->
     <div class="score-board" id="scoreBoard" style="display:none;">
       <div>SCORE: <span id="currentScore">0</span></div>
-      <div>Q: <span id="qCounter">1</span>/<span id="totalQ">12</span></div>
+      <div>Q: <span id="qCounter">1</span>/<span id="totalQ">8</span></div>
       <div>HIGH: <span id="highScore">0</span></div>
     </div>
 
@@ -31,7 +31,8 @@
           Bem-vindo ao <span class="highlight">ARCADE DEV QUIZ</span>!<br><br>
           Teste seus conhecimentos básicos de<br>
           <span class="highlight">HTML</span>, <span class="highlight">CSS</span> e <span class="highlight">JAVA</span><br><br>
-          São 12 perguntas bem fáceis.<br>
+          São 8 perguntas bem fáceis<br>
+          (múltipla escolha + verdadeiro/falso).<br>
           Acerte o máximo que conseguir!
         </p>
         <button class="btn btn-start" onclick="startQuiz()">▶ PRESS START</button>
@@ -42,7 +43,7 @@
     <div class="screen" id="quizScreen">
       <div class="question-card">
         <div class="category-tag" id="categoryTag"></div>
-        <div class="question-number" id="questionNumber">PERGUNTA 1 / 12</div>
+        <div class="question-number" id="questionNumber">PERGUNTA 1 / 8</div>
         <div class="question-text" id="questionText"></div>
         <div id="optionsContainer"></div>
         <div class="feedback" id="feedback"></div>
@@ -55,7 +56,7 @@
       <div class="result-box">
         <h2>GAME OVER</h2>
         <div class="stars" id="stars"></div>
-        <div class="final-score" id="finalScore">0 / 12</div>
+        <div class="final-score" id="finalScore">0 / 8</div>
         <div class="rank" id="rankText"></div>
         <p class="result-message" id="resultMessage"></p>
         <button class="btn btn-restart" onclick="restartQuiz()">↻ JOGAR DE NOVO</button>
