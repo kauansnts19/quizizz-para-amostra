@@ -1,5 +1,4 @@
 // ========== 8 PERGUNTAS FÁCEIS ==========
-// Mistura de múltipla escolha (4 alternativas) + Verdadeiro/Falso
 const questions = [
   // 1 - HTML (múltipla escolha)
   {
@@ -190,8 +189,10 @@ function showResult() {
   document.getElementById('scoreBoard').style.display = 'none';
 
   const total = questions.length;
+  const nota = ((score / total) * 10).toFixed(1); // Nota de 0 a 10
 
   document.getElementById('finalScore').textContent = `${score} / ${total}`;
+  document.getElementById('notaText').textContent = `NOTA: ${nota}`;
 
   // Atualiza high score
   if (score > highScore) {
@@ -199,14 +200,14 @@ function showResult() {
     localStorage.setItem('arcadeDevHighScore', highScore);
   }
 
-  // Rank e mensagem (ajustado para 8 perguntas)
+  // Título + mensagem de acordo com os acertos
   let rank, message, stars;
 
-  if (score === total) {
+  if (score === 8) {
     rank = "★★★ LENDÁRIO ★★★";
     message = "PERFEITO! Você dominou o básico de HTML, CSS e Java!";
     stars = "★★★★★";
-  } else if (score >= 7) {
+  } else if (score === 7) {
     rank = "★★ ARCADE MASTER ★★";
     message = "Excelente! Quase perfeito. Continue treinando!";
     stars = "★★★★☆";

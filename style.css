@@ -333,7 +333,21 @@ body::after {
   font-size: 1.4rem;
   color: var(--neon-green);
   text-shadow: 0 0 20px var(--neon-green);
-  margin: 25px 0;
+  margin: 20px 0 10px;
+}
+
+.nota {
+  font-size: 0.9rem;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 12px var(--neon-cyan);
+  margin: 15px 0;
+}
+
+.rank {
+  font-size: 0.7rem;
+  margin: 18px 0;
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px var(--neon-pink);
 }
 
 .result-message {
@@ -341,13 +355,6 @@ body::after {
   line-height: 1.8;
   color: var(--neon-cyan);
   margin-bottom: 10px;
-}
-
-.rank {
-  font-size: 0.7rem;
-  margin: 20px 0;
-  color: var(--neon-pink);
-  text-shadow: 0 0 10px var(--neon-pink);
 }
 
 /* Decorative stars */
