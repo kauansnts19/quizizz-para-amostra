@@ -1,143 +1,57 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevQuiz - Desenvolvimento de Sistemas</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz de Desenvolvimento de Sistemas</title>
+  <!-- Fonte retrô (opcional: sem internet, usa a fonte monoespaçada padrão) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="topbar">
-        <a class="logo" href="#"> &lt;/&gt; Dev<span>Quiz</span></a>
-        <span class="tag">DESENVOLVIMENTO DE SISTEMAS</span>
-    </header>
+  <div class="sun"></div>
+  <div class="grid"></div>
 
-    <main class="container">
+  <main class="cabinet">
 
-        <!-- TELA INICIAL -->
-        <section id="start-screen" class="panel">
-            <div class="hero-icon">💻</div>
-            <p class="eyebrow">TESTE SEUS CONHECIMENTOS</p>
-            <h1>Desafie sua mente.<br><span>Domine a tecnologia.</span></h1>
-            <p class="description">
-                Responda a 8 perguntas sobre programação,
-                lógica, banco de dados e desenvolvimento de sistemas.
-            </p>
+    <!-- TELA INICIAL -->
+    <section id="tela-inicio" class="tela ativa">
+      <h1 class="logo">QUIZ DE<br>DESENVOLVIMENTO<br>DE SISTEMAS</h1>
+      <p class="sub">Teste seus conhecimentos sobre tecnologia!</p>
+      <label for="nome" class="label">DIGITE SEU NOME</label>
+      <input id="nome" type="text" maxlength="14" placeholder="PLAYER 1" autocomplete="off">
+      <button id="btn-comecar" class="btn btn-rosa">COMEÇAR QUIZ</button>
+      <p class="coin">INSERT COIN ▮ 10 FASES</p>
+    </section>
 
-            <div class="features">
-                <div class="feature">
-                    <span>📝</span>
-                    <strong>8 perguntas</strong>
-                    <small>Conhecimento</small>
-                </div>
-                <div class="feature">
-                    <span>⏱️</span>
-                    <strong>15 segundos</strong>
-                    <small>Por pergunta</small>
-                </div>
-                <div class="feature">
-                    <span>🏆</span>
-                    <strong>8.000 pontos</strong>
-                    <small>Pontuação máxima</small>
-                </div>
-            </div>
+    <!-- TELA DO QUIZ -->
+    <section id="tela-quiz" class="tela">
+      <div class="hud">
+        <span id="hud-nome">PLAYER 1</span>
+        <span id="hud-fase">FASE 1/10</span>
+        <span id="hud-pontos">SCORE 0</span>
+      </div>
+      <div class="barra"><div id="barra-prog"></div></div>
+      <p id="tipo" class="tipo"></p>
+      <h2 id="pergunta" class="pergunta"></h2>
+      <div id="opcoes" class="opcoes"></div>
+      <p id="feedback" class="feedback" aria-live="polite"></p>
+      <button id="btn-proxima" class="btn btn-ciano" hidden>PRÓXIMA PERGUNTA</button>
+    </section>
 
-            <label for="player-name">Digite seu nome:</label>
-            <input id="player-name" type="text" maxlength="30"
-                   placeholder="Seu nome aqui">
+    <!-- TELA DE RESULTADOS -->
+    <section id="tela-final" class="tela">
+      <p class="tipo">GAME OVER</p>
+      <h2 id="res-nome" class="logo pequeno"></h2>
+      <p class="placar"><span id="res-acertos">0</span>/<span id="res-total">10</span> ACERTOS</p>
+      <p class="aprov"><span id="res-pct">0</span>% DE APROVEITAMENTO</p>
+      <p id="res-msg" class="msg"></p>
+      <button id="btn-reiniciar" class="btn btn-amarelo">JOGAR NOVAMENTE</button>
+    </section>
 
-            <button id="start-btn" class="primary-btn" type="button">
-                COMEÇAR DESAFIO →
-            </button>
+  </main>
 
-            <p class="small-note">Prepare-se. O desafio vai começar!</p>
-        </section>
-
-        <!-- TELA DAS PERGUNTAS -->
-        <section id="quiz-screen" class="panel hidden">
-            <div class="quiz-header">
-                <div>
-                    <span class="muted">JOGADOR</span>
-                    <strong id="player-display">Programador</strong>
-                </div>
-                <div id="timer" class="timer">
-                    ⏱️ <strong id="time-left">15</strong>s
-                </div>
-            </div>
-
-            <div class="progress-info">
-                <strong id="question-counter">PERGUNTA 1 DE 8</strong>
-                <strong id="score-display">0 pontos</strong>
-            </div>
-
-            <div class="progress-track">
-                <div id="progress-bar"></div>
-            </div>
-
-            <div class="question-area">
-                <span id="question-category" class="category">
-                    PROGRAMAÇÃO
-                </span>
-                <h2 id="question-text">Carregando pergunta...</h2>
-                <p class="muted">Escolha uma alternativa:</p>
-
-                <div id="answers" class="answers"></div>
-
-                <div id="feedback" class="feedback hidden"
-                     role="status" aria-live="polite"></div>
-
-                <button id="next-btn" class="primary-btn hidden"
-                        type="button">
-                    PRÓXIMA PERGUNTA →
-                </button>
-            </div>
-        </section>
-
-        <!-- TELA DE RESULTADO -->
-        <section id="result-screen" class="panel hidden">
-            <div id="result-emoji" class="hero-icon">🏆</div>
-            <p class="eyebrow">DESAFIO CONCLUÍDO</p>
-            <h1 id="result-title">Parabéns!</h1>
-            <p id="result-message" class="description"></p>
-
-            <div class="score-card">
-                <p>SUA PONTUAÇÃO</p>
-                <div class="final-score">
-                    <strong id="final-score">0</strong>
-                    <span>pontos</span>
-                </div>
-                <div class="stats">
-                    <div>
-                        <strong id="correct-count">0</strong>
-                        <span>Acertos</span>
-                    </div>
-                    <div>
-                        <strong id="wrong-count">0</strong>
-                        <span>Erros</span>
-                    </div>
-                    <div>
-                        <strong id="accuracy">0%</strong>
-                        <span>Precisão</span>
-                    </div>
-                </div>
-            </div>
-
-            <button id="review-btn" class="secondary-btn" type="button">
-                📋 REVISAR RESPOSTAS
-            </button>
-
-            <div id="review-list" class="review-list hidden"></div>
-
-            <button id="restart-btn" class="primary-btn" type="button">
-                🔄 JOGAR NOVAMENTE
-            </button>
-        </section>
-    </main>
-
-    <footer>
-        <p>DevQuiz — Aprenda, programe e evolua! 🚀</p>
-    </footer>
+  <div id="confete"></div>
+  <script src="script.js"></script>
 </body>
 </html>
